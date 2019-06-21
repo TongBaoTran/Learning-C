@@ -1,0 +1,60 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define LINELENGTH 100
+
+
+int main()
+{
+  //Task1
+
+ char name[100];
+ printf("Enter name: ");
+ scanf("%s", name);
+ printf("Length of name: %d", strlen(name));
+
+
+
+ char firstname[100];
+ char lastname[100];
+ printf("Enter first name: ");
+ scanf("%s", firstname);
+  printf("Enter last name: ");
+ scanf("%s", lastname);
+  printf(" Name: %s",strcat(firstname, lastname));
+   char firstname[100];
+   printf("Enter first name: ");
+ scanf("%s", firstname);
+
+ printf("%s", strrev(firstname));
+
+
+
+ //Task 2
+
+ FILE *fp1;
+ FILE *fp2;
+
+ fp1=fopen("text1.txt", "r");
+ fp2=fopen("text2.txt", "r");
+
+char readline1[LINELENGTH];
+char readline2[LINELENGTH];
+
+while ( !feof(fp1)&& !feof(fp2))
+{
+  fgets(readline1, LINELENGTH , fp1);
+  fgets(readline2,LINELENGTH, fp2);
+  if (strcmp(readline1,readline2)>0 || strcmp(readline1,readline2)<0  )
+  {
+   printf("First line different in file 1: %s\n", readline1) ;
+   printf("And in file 2: %s\n", readline2) ;
+  break;
+  }
+}
+fflush(stdin);
+fclose(fp1);
+fclose(fp2);
+
+return 0;
+}
