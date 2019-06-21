@@ -1,0 +1,106 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+
+int main()
+{
+    //Exercise 2.2
+    printf("******************** Exercise 2.2 ************\n");
+    printf("%d > %d is %d \n",3,4,3>4);
+    printf("%d = %d is %d \n",6,7,6==7);
+    char x = 'x',y= 'y';
+    bool compa=x<y;
+    printf("%c < %c is %d",x,y,compa);
+
+    printf("\n");
+
+    // Exercise 2.5
+    printf("******************** Exercise 2.5 ************\n");
+    double a,b;
+    printf("Please enter first number: ");
+    scanf("%lf",&a);
+    printf("\n");
+    printf("Please enter second number: ");
+    scanf("%lf",&b);
+    printf("\n\n");
+
+    if (a<b)
+              {
+              printf("%lf is smaller than %lf",a,b);
+              }
+    else if (a>b)
+              {
+              printf("%lf is greater than %lf",a,b);
+              }
+    else
+              {
+              printf("%lf is equal to %lf",a,b);
+              }
+
+    printf("\n\n");
+    // Exercise 2.6
+    printf("******************** Exercise 2.6 ************\n");
+    int int_num;
+    printf("Please enter an integer: ");
+    scanf("%d",&int_num);
+    if (int_num % 2 ==0)
+    {
+      printf("%d is an even number",int_num);
+    }
+    else
+              {printf("%d is an odd number",int_num);
+              }
+    printf("\n\n");
+    // Exercise 2.9
+    printf("******************** Exercise 2.9 ************\n");
+    int x1;
+    printf("Please enter an integer: ");
+    scanf("%d",&x1);
+    if (x1>0)
+    {
+      printf("%d is a positive number",x1);
+    }
+    else if (x1<0)
+              {printf("%d is a negative number",x1);
+              }
+    else
+              {printf("%d is a zero",x1);
+              }
+    printf("\n\n");
+
+    // Exercise 2.10
+    printf("******************** Exercise 2.10 ************\n");
+    int x2;
+    printf("Please enter an integer: ");
+    scanf("%d",&x2);
+    if ((x2>0) && (x2%2==0))
+    {
+      printf("%d is a positive and even number",x2);
+    }
+    if ((x2>0) && (x2 % 2==1))
+              {printf("%d is a positive and odd number",x2);
+              }
+    if (x2<0)
+              {printf("The entered number is negative. Please try again");
+              }
+    printf("\n\n");
+
+    // Exercise 2.12
+    printf("******************** Exercise 2.12 ************\n");
+    int x2;
+    printf("Please enter an integer: ");
+    scanf("%d",&x2);
+    if ((x2>0) && (x2%2==0))
+    {
+      printf("%d is a positive and even number",x2);
+    }
+    if ((x2>0) && (x2 % 2==1))
+              {printf("%d is a positive and odd number",x2);
+              }
+    if (x2<0)
+              {printf("The entered number is negative. Please try again");
+              }
+    printf("\n\n");
+
+    return 0;
+}
