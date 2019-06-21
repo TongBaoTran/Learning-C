@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define LENGTH 20
+
+int main()
+{
+
+FILE *original,*copy;
+char ch, sourcefile[LENGTH], targetfile[LENGTH];
+
+
+   printf("Enter name of source file: ");
+   gets(sourcefile);
+   original = fopen(sourcefile, "r");
+   if(original == NULL )
+   {
+      printf("Source file does not exist");
+      exit(EXIT_FAILURE);
+   }
+
+
+   printf("Enter name of target file: ");
+   gets(targetfile);
+   copy = fopen(targetfile, "w");
+   if(copy == NULL)
+   {
+      printf("Copy file does not exist");
+      exit(EXIT_FAILURE);
+   }
+
+while ((ch=fgetc(original))!= EOF)
+      {
+          fputc(ch,copy);
+      }
+
+fclose(original);
+fclose(copy);
+
+
+return 0;
+}
