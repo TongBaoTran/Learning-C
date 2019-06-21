@@ -1,0 +1,43 @@
+#include <stdio.h>
+#define MAXFIRSTNAME 41 // maximum number of characters for first name
+#define MAXLASTNAME 41 // maximum number of characters for last name
+#define MAXRECORDS 100 // maximum number of records allowed
+
+struct account
+{ // set up the account template
+char firstname[MAXFIRSTNAME];
+char lastname[MAXLASTNAME];
+float balance;
+};
+
+
+
+int main()
+{
+// defines an array of account structures
+struct account book[MAXRECORDS];
+int count = 0;
+int index;
+printf("Please enter the first name: ");
+while (count < MAXRECORDS && gets(book[count].firstname) != NULL && book[count].firstname[0] != '\0' )
+{
+printf("Now enter the last name: ");
+gets(book[count].lastname);
+printf("Now enter the Balance in Euros: ");
+scanf("%f", & book[count++].balance);
+while (getchar() != '\n')
+continue;
+if (count < MAXRECORDS)
+printf("Enter the next first name: ");
+}
+if (count > 0)
+{
+printf("\nHere is the list of your Clients:\n");
+for (index = 0; index < count; index++)
+printf("%s %s has %.2f Euros in their Account\n",
+book[index].firstname, book[index].lastname, book[index].balance);
+}
+else
+printf("No Records!\n");
+return 0;
+}
