@@ -1,0 +1,74 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node
+{
+              int x;
+              int y;
+              int z;
+              float f;
+              struct node *next;
+};
+
+int main()
+{
+    //open file
+    FILE *fp;
+    fp=fopen("file.txt","r");
+    if (fp==NULL)
+    {
+                  printf("File does not exist");
+                  exit(EXIT_FAILURE);
+    }
+rewind(fp);
+
+printf("Searching the list for the x values less than 60:\n");
+
+struct node *root=NULL;
+struct node *temp;
+temp=(struct node*) malloc(sizeof(struct node));
+                 //Reading data from file to the node temp
+                 while ( (fscanf(fp,"%d,%d,%d,%f\n", &(temp->x),&(temp->y),&(temp->z),&(temp->f))!=EOF ))
+                 {
+                     temp->next=NULL;
+                     if (root==NULL)
+                       {
+                       root=temp;
+                       }
+                     else
+                      {
+                          struct node* p;
+                          p = (struct node*) malloc(sizeof(struct node));
+                          p=root;
+                         while (p->next!=NULL)
+                          {
+                                        p=p->next; //go through the list to the end
+                          }
+                          p->next=temp;
+                      }
+                   temp=(struct node*) malloc(sizeof(struct node));
+              }
+
+
+    //read data from the list
+    struct node *index;
+    index=(struct node*) malloc(sizeof(struct node));
+    index=root;
+    if(index==NULL)
+    {
+                  printf("List is empty");
+    }
+else
+    {
+     while (index!=NULL)
+              {
+                  if (index->x<60) printf("%d, ", index->x);
+                  index=index->next;
+               }
+    printf("\n");
+    }
+
+
+    fclose(fp);
+    return 0;
+}
