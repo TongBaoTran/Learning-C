@@ -1,0 +1,98 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+typedef struct Node
+{
+   int number;
+   struct Node *left, *right;
+} Node;
+
+//CREATE NEW NODE
+Node* newNode(int number)
+{
+   Node *newNode = (Node*) malloc(sizeof(Node));
+   if (newNode == NULL)
+   {
+      printf("memory full\n");
+      exit(1);
+   }
+   newNode->number = number;
+   newNode->left = NULL;
+   newNode->right = NULL;
+   return newNode;
+}
+
+
+//INSERT NODE TO THE TREE
+Node* insertNode(int number, Node *node)
+{
+   if (node == NULL)
+      return newNode(number);
+   else
+      if (number < node->number) // insert into left sub tree
+         node->left = insertNode(number, node->left);
+      else            // insert into right sub tree
+         node->right = insertNode(number, node->right);
+   return node;
+}
+
+//DISPLAY TREE IN ORDER
+void inorder(Node *node)
+{
+if (node != NULL)
+   {
+ inorder(node->left);
+ printf("%i ", node->number);
+ inorder(node->right);
+   }
+}
+
+//COUNT NUMBER OF NODES
+
+int countnode(Node *node)
+{
+              int count=1;
+              if (node==NULL)
+              {
+                            printf("This tree is empty");
+              }
+              else
+              {
+                 if (node->left!=NULL) count= count+countnode(node->left);
+                 if (node->right!=NULL) count= count+countnode(node->right);
+              }
+              return count;
+}
+
+
+
+//DELETE ALL NODES
+void deleteAll(Node *node)
+{
+if (node==NULL) return;
+deleteAll(node->left);
+deleteAll(node->right);
+free(node);
+}
+
+//MAIN FUNCTION
+int main(void)
+{
+     Node *tree = NULL;
+     int i,count,countafter;
+     do
+   {
+           printf("Input number (0 for end): ");
+           scanf("%i", &i);
+           if (i != 0)
+           tree = insertNode(i, tree);
+   } while (i != 0);
+
+      printf("\nin-order:   ");
+      inorder(tree);
+      printf("\n");
+      count=countnode(tree);
+      printf("Number of nodes in tree: %d ", count);
+      deleteAll(tree);
+return 0;
+}
