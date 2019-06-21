@@ -1,0 +1,109 @@
+#include <stdio.h>
+#include <stdlib.h>
+//Define functions which are used in the main function
+
+//void Display_Stars();
+void Display_Stars(void)
+{
+              for (int y=1;y<=10;y++)
+              {
+                            printf("*");
+
+              }
+}
+
+
+//Square function;
+int Square(int a)
+{
+              return a*a;
+}
+
+//Fibonacci function
+int Fibonacci (int n)
+{
+              if (n==0)
+                            return 0;
+              else if (n==1)
+                            return 1;
+              else
+                            return (Fibonacci(n-1)+Fibonacci(n-2));
+}
+
+//Fibonacci function 2
+void Fibonacci2 (int n)
+{
+              int temp0=0, temp1=1, i, temp2;
+              if (n==0)
+                            printf("Fibonacci series: %d", temp0);
+              else if (n==1)
+              {
+                            printf("Fibonacci series:\n");
+                            printf("%d \n", temp0);
+                            printf("%d", temp1);
+              }
+
+              else
+              {
+                            printf("Fibonacci series:\n");
+                            printf("%d \n", temp0);
+                            printf("%d\n", temp1);
+                            for (i=2; i<n;i++)
+                            {
+                              temp2=temp1;
+                              printf("%d \n", temp0+temp1);
+                              temp1 +=temp0;
+                              temp0=temp2;
+
+                            }
+              }
+}
+
+
+
+//Main function
+int main()
+{
+    // Example
+    printf("***********Example Printing stars*************\n");
+    for (int x=1;x<=5;x++)
+    {
+      Display_Stars();
+      printf("\n");
+    }
+    printf("\n\n");
+
+
+    // Exercise 4.9
+    printf("***********Exercise 4.9*************\n");
+    int num,square_n;
+    printf("Please enter a number:");
+    scanf("%d",&num);
+    square_n=Square(num);
+    printf("Square of %d is %d",num,square_n);
+    printf("\n\n");
+
+
+    //Fibonacci using recursive
+    printf("***********Fibonacci using recursive*************\n");
+    int n,i=0,x;
+    printf("Enter number of Fibonacci terms: ");
+    scanf("%d",&n);
+    printf("Fibonacci series\n");
+    for (x=1;x<=n;x++)
+    {
+                  printf("%d\n",Fibonacci(i));
+                  i++;
+    }
+
+    printf("\n\n");
+    
+    //Exercise 4.13: Check function Fibonacci 2
+
+    printf("***********Fibonacci using for loop*************\n");
+    int m;
+    printf("Enter number of Fibonacci terms: ");
+    scanf("%d",&m);
+    Fibonacci2(m);
+    return 0;
+}
