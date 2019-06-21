@@ -1,0 +1,152 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+struct node
+{
+              int data;
+              struct node *next;
+};
+struct node *root=NULL;
+
+
+
+int main()
+{
+int choice;
+while(1)
+ {
+               printf("Single list operation\n");
+               printf("0: Create your list\n");
+               printf("1: Display your list data\n");
+               printf("2: Delete minimum value in your list\n");
+               printf("3: Quit\n");
+               printf("Enter your choice:");
+               scanf("%d",&choice);
+               printf("\n");
+               switch (choice)
+               {
+                    case 0: createList();
+                            break;
+                    case 1: displayList();
+                            break;
+                    case 2:
+                            printf("List before deleting: ");
+                            displayList();
+                            deleteMin();
+                             printf("List after deleting: ");
+                            displayList();
+                            break;
+                    case 3: exit(1);
+                    default: printf("Invalid choice");
+               }
+ }
+              return 0;
+}
+
+
+
+
+
+
+//FUNCTION TO CREATE A LINKED LIST
+void createList()
+{
+        struct node *temp;
+        temp=(struct node*) malloc(sizeof(struct node));
+        int num;
+        printf("Enter your data:");
+        scanf("%d", &num);
+        printf("\n");
+        temp->data=num;
+        temp->next=NULL;
+        if (root==NULL)
+        {
+                      root=temp;
+        }
+        else
+        {
+                      struct node *p;
+                      p=root;
+                      while (p->next !=NULL)
+                      {
+                                    p=p->next;
+                      }
+                      p->next=temp;
+        }
+}
+
+//FUNCTION TO DISPLAY LINKED LIST
+void displayList()
+{
+                            struct node *p;
+                            p=(struct node*) malloc(sizeof(struct node));
+                            p=root;
+    if(p==NULL)
+    {
+                  printf("List is empty");
+    }
+else
+    {
+     while (p!=NULL)
+              {
+                  printf("%d-->", p->data);
+                  p=p->next;
+               }
+    }
+    printf("\n\n");
+    return 0;
+}
+
+
+//FUNCTION TO DELETE THE MINIMUM IN YOUR LIST
+int deleteMin()
+{
+     //find min value in the list
+     int min;
+     struct node *p;
+     p=root;
+     if (p==NULL)
+     {
+                   printf("List is empty\n");
+                   exit(1);
+     }
+     else
+     {
+                   min=p->data;
+                   while (p!=NULL)
+                   {
+                                 if (p->data<min)
+                                 {
+                                               min=p->data;
+                                 }
+                    p=p->next;
+                   }
+     }
+      printf("Min value is: %d\n", min);
+      struct node *index,*prev;
+      index=root;
+      while (index!=NULL)
+      {
+                    if (index->data==min)
+                    {
+                        if (index==root)
+                        {
+                                      root=index->next;
+                                      free(index);
+                                      return 1;
+                        }
+                       else
+                       {
+                                     prev->next=index->next;
+                                     free(index);
+                                     return 1;
+                       }
+                     }
+                   else
+                     {
+                                   prev=index;
+                                   index=index->next;
+                     }
+      }
+return 0;
+}
